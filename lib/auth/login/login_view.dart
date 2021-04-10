@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whfms_mobile_app/auth/auth_cubit.dart';
-import 'package:whfms_mobile_app/auth/auth_repository.dart';
-import 'package:whfms_mobile_app/auth/form_submition_status.dart';
-import 'package:whfms_mobile_app/auth/login/login_bloc.dart';
-import 'package:whfms_mobile_app/auth/login/login_event.dart';
-import 'package:whfms_mobile_app/auth/login/login_state.dart';
+import 'package:flutter_bloc_auth_flow/auth/auth_cubit.dart';
+import 'package:flutter_bloc_auth_flow/auth/auth_repository.dart';
+import 'package:flutter_bloc_auth_flow/auth/form_submition_status.dart';
+import 'package:flutter_bloc_auth_flow/auth/login/login_bloc.dart';
+import 'package:flutter_bloc_auth_flow/auth/login/login_event.dart';
+import 'package:flutter_bloc_auth_flow/auth/login/login_state.dart';
 
 class LoginView extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -15,9 +15,8 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: BlocProvider(
-              create: (context) =>
-                  LoginBloc(
-                      authRepo: context.read<AuthRepository>(),
+              create: (context) => LoginBloc(
+                    authRepo: context.read<AuthRepository>(),
                     authCubit: context.read<AuthCubit>(),
                   ),
               child: Stack(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whfms_mobile_app/auth/auth_cubit.dart';
-import 'package:whfms_mobile_app/auth/auth_repository.dart';
-import 'package:whfms_mobile_app/auth/form_submition_status.dart';
-import 'package:whfms_mobile_app/auth/sign_up/sign_up_bloc.dart';
-import 'package:whfms_mobile_app/auth/sign_up/sign_up_event.dart';
-import 'package:whfms_mobile_app/auth/sign_up/sign_up_state.dart';
+import 'package:flutter_bloc_auth_flow/auth/auth_cubit.dart';
+import 'package:flutter_bloc_auth_flow/auth/auth_repository.dart';
+import 'package:flutter_bloc_auth_flow/auth/form_submition_status.dart';
+import 'package:flutter_bloc_auth_flow/auth/sign_up/sign_up_bloc.dart';
+import 'package:flutter_bloc_auth_flow/auth/sign_up/sign_up_event.dart';
+import 'package:flutter_bloc_auth_flow/auth/sign_up/sign_up_state.dart';
 
 class SignUpView extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();

@@ -1,20 +1,18 @@
-import 'package:whfms_mobile_app/auth/form_submition_status.dart';
+import 'package:flutter_bloc_auth_flow/auth/form_submition_status.dart';
 
-class ConfirmationState{
+class ConfirmationState {
   final String confirmationCode;
   final FormSubmissionStatus formStatus;
 
   bool get isValidConfirmationCode => confirmationCode.length == 6;
 
   ConfirmationState({
-    this.confirmationCode='',
+    this.confirmationCode = '',
     this.formStatus = const InitialFormStatus(),
   });
 
-  ConfirmationState copyWith({
-    String confirmationCode,
-    FormSubmissionStatus formStatus
-  }){
+  ConfirmationState copyWith(
+      {String confirmationCode, FormSubmissionStatus formStatus}) {
     return ConfirmationState(
       confirmationCode: confirmationCode ?? this.confirmationCode,
       formStatus: formStatus ?? this.formStatus,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whfms_mobile_app/auth/auth_cubit.dart';
-import 'package:whfms_mobile_app/auth/auth_repository.dart';
-import 'package:whfms_mobile_app/auth/confirm/confirmation_bloc.dart';
-import 'package:whfms_mobile_app/auth/confirm/confirmation_event.dart';
-import 'package:whfms_mobile_app/auth/confirm/confirmation_state.dart';
-import 'package:whfms_mobile_app/auth/form_submition_status.dart';
+import 'package:flutter_bloc_auth_flow/auth/auth_cubit.dart';
+import 'package:flutter_bloc_auth_flow/auth/auth_repository.dart';
+import 'package:flutter_bloc_auth_flow/auth/confirm/confirmation_bloc.dart';
+import 'package:flutter_bloc_auth_flow/auth/confirm/confirmation_event.dart';
+import 'package:flutter_bloc_auth_flow/auth/confirm/confirmation_state.dart';
+import 'package:flutter_bloc_auth_flow/auth/form_submition_status.dart';
 
 class ConfirmationView extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -15,17 +15,16 @@ class ConfirmationView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: BlocProvider(
-        create: (context) =>
-            ConfirmationBloc(authRepo: context.read<AuthRepository>(),
-              authCubit: context.read<AuthCubit>(),
-            ),
-        child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            _confirmationForm(),
-          ],
-        )
-      )),
+              create: (context) => ConfirmationBloc(
+                    authRepo: context.read<AuthRepository>(),
+                    authCubit: context.read<AuthCubit>(),
+                  ),
+              child: Stack(
+                alignment: Alignment.bottomCenter,
+                children: [
+                  _confirmationForm(),
+                ],
+              ))),
     );
   }
 
@@ -72,10 +71,10 @@ class ConfirmationView extends StatelessWidget {
       },
     );
   }
-  
 
   Widget _confirmButton() {
-    return BlocBuilder<ConfirmationBloc, ConfirmationState>(builder: (context, state) {
+    return BlocBuilder<ConfirmationBloc, ConfirmationState>(
+        builder: (context, state) {
       return Container(
         margin: const EdgeInsets.only(top: 60),
         width: double.infinity,
@@ -90,7 +89,9 @@ class ConfirmationView extends StatelessWidget {
             : ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState.validate()) {
-                    context.read<ConfirmationBloc>().add(ConfirmationSubmitted());
+                    context
+                        .read<ConfirmationBloc>()
+                        .add(ConfirmationSubmitted());
                   }
                 },
                 child: Text('Confirm')),

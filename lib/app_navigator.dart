@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whfms_mobile_app/auth/auth_cubit.dart';
-import 'package:whfms_mobile_app/auth/auth_navigator.dart';
-import 'package:whfms_mobile_app/loading_view.dart';
-import 'package:whfms_mobile_app/session_cubit.dart';
-import 'package:whfms_mobile_app/session_state.dart';
-import 'package:whfms_mobile_app/session_view.dart';
+import 'package:flutter_bloc_auth_flow/auth/auth_cubit.dart';
+import 'package:flutter_bloc_auth_flow/auth/auth_navigator.dart';
+import 'package:flutter_bloc_auth_flow/loading_view.dart';
+import 'package:flutter_bloc_auth_flow/session_cubit.dart';
+import 'package:flutter_bloc_auth_flow/session_state.dart';
+import 'package:flutter_bloc_auth_flow/session_view.dart';
 
 class AppNavigator extends StatelessWidget {
   @override
@@ -15,22 +15,22 @@ class AppNavigator extends StatelessWidget {
       return Navigator(
         pages: [
           //show loading Screen
-          if(state is UnKnownSessionState) MaterialPage(child: LoadingView()),
+          if (state is UnKnownSessionState) MaterialPage(child: LoadingView()),
 
           //show Auth Flow
-          if(state is UnAuthenticated)
-            MaterialPage(child: BlocProvider(
-              create: (context) => AuthCubit(sessionCubit: context.read<SessionCubit>()),
+          if (state is UnAuthenticated)
+            MaterialPage(
+                child: BlocProvider(
+              create: (context) =>
+                  AuthCubit(sessionCubit: context.read<SessionCubit>()),
               child: AuthNavigator(),
-            )
-            ),
+            )),
 
           //show session flow
-          if(state is Authenticated) MaterialPage(child: SessionView())
+          if (state is Authenticated) MaterialPage(child: SessionView())
         ],
         onPopPage: (route, result) => route.didPop(result),
       );
     });
   }
-
 }

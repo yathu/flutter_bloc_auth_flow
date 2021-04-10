@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:whfms_mobile_app/auth/auth_credentials.dart';
-import 'package:whfms_mobile_app/session_cubit.dart';
+import 'package:flutter_bloc_auth_flow/auth/auth_credentials.dart';
+import 'package:flutter_bloc_auth_flow/session_cubit.dart';
 
 enum AuthState { login, signUP, confirmSignUP }
 

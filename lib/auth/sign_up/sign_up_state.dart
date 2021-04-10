@@ -1,6 +1,6 @@
-import 'package:whfms_mobile_app/auth/form_submition_status.dart';
+import 'package:flutter_bloc_auth_flow/auth/form_submition_status.dart';
 
-class SignUpState{
+class SignUpState {
   final String username;
   final String email;
   final String password;
@@ -11,22 +11,21 @@ class SignUpState{
   bool get isValidPassword => password.length > 6;
 
   SignUpState({
-    this.username='',
-    this.email='',
-    this.password='',
+    this.username = '',
+    this.email = '',
+    this.password = '',
     this.formStatus = const InitialFormStatus(),
   });
 
-  SignUpState copyWith({
-    String username,
-    String email,
-    String password,
-    FormSubmissionStatus formStatus
-  }){
+  SignUpState copyWith(
+      {String username,
+      String email,
+      String password,
+      FormSubmissionStatus formStatus}) {
     return SignUpState(
-        username: username ?? this.username,
-        email: email ?? this.email,
-        password: password ?? this.password,
+      username: username ?? this.username,
+      email: email ?? this.email,
+      password: password ?? this.password,
       formStatus: formStatus ?? this.formStatus,
     );
   }
